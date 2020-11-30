@@ -1,0 +1,25 @@
+####
+
+####REF
+# https://meetrix.io/blog/webrtc/jitsi/jitsi-meet-load-testing.html
+###
+
+
+version: "3.3"
+
+services:
+    torture:
+        image: meetrix/jitsi-meet-torture
+
+    hub:
+        image: selenium/hub:3.141.59
+
+    node:
+        build: ./node
+        image: meetrix/jitsi-meet-torture-selenium-node
+        volumes:
+            - ./devshm:/dev/shm
+        depends_on:
+            - hub
+        environment:
+            HUB_HOST: hub
