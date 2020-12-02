@@ -17,8 +17,8 @@ services:
     node:
         build: ./node
         image: meetrix/jitsi-meet-torture-selenium-node
-        volumes:
-            - ./devshm:/dev/shm
+        #volumes:
+        #    - ./devshm:/dev/shm
         depends_on:
             - hub
         environment:
